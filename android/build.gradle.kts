@@ -1,23 +1,26 @@
+import Dependencies.Android
+
 plugins {
     id("com.android.application")
     kotlin("android")
 }
 
 android {
-    compileSdk = 32
+    compileSdk = Android.compileSdk
+    buildToolsVersion = Android.buildToolsVersion
 
     val ciBuild = System.getenv("CI") == "true"
     defaultConfig {
         applicationId = "com.hello.curiosity.gotg.android"
-        minSdk = 21
-        targetSdk = 32
+        minSdk = Android.minSdk
+        targetSdk = Android.targetSdk
 
         versionCode = 1
         if (ciBuild) {
             versionCode = System.getenv("GITHUB_RUN_NUMBER").toInt()
         }
 
-        versionName = "1.0"
+        versionName = "${Android.versionMajor}.${Android.versionMinor}.${Android.versionPatch}"
 
         multiDexEnabled = true
 
@@ -27,6 +30,9 @@ android {
     }
 
     buildTypes {
+        getByName("debug") {
+            isTestCoverageEnabled = true
+        }
         getByName("release") {
             isMinifyEnabled = false
         }
@@ -55,7 +61,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = Dependencies.Versions.jvmTarget
     }
 
     lint {
@@ -66,13 +72,22 @@ android {
         xmlReport = false
         htmlReport = true
         warningsAsErrors = true
-        disable += mutableSetOf("GoogleAppIndexingWarning", "GradleDependency", "ObsoleteLintCustomCheck")
+        disable += mutableSetOf(
+            "GoogleAppIndexingWarning",
+            "GradleDependency",
+            "ObsoleteLintCustomCheck"
+        )
     }
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
+
+    // Android
+    implementation(Android.material)
+    implementation(Dependencies.Androidx.appcompat)
+    implementation(Dependencies.Androidx.constraint)
+
+    // Leak
+    debugImplementation(Dependencies.leakCanary)
 }

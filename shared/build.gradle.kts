@@ -1,3 +1,5 @@
+import Dependencies.Android
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -21,7 +23,7 @@ kotlin {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
         val commonMain by getting
         val commonTest by getting {
@@ -53,10 +55,11 @@ kotlin {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = Android.compileSdk
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = Android.minSdk
+        targetSdk = Android.targetSdk
     }
 }
