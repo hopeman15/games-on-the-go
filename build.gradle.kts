@@ -1,3 +1,4 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -7,29 +8,37 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0")
-        classpath("com.android.tools.build:gradle:7.2.1")
+        // Android
+        classpath(Dependencies.Gradle.androidGradlePlugin)
+
+        // Kotlin
+        classpath(Dependencies.Gradle.kotlin)
     }
 }
 
 plugins {
-    id("org.jetbrains.kotlinx.kover") version "0.5.1"
+    id(Dependencies.Gradle.kover) version Dependencies.Versions.kover
+    id(Dependencies.Gradle.versions) version Dependencies.Versions.gradleVersions
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+        configurations.all {
+            resolutionStrategy.force(Dependencies.Kotlin.reflect)
+            resolutionStrategy.force(Dependencies.Kotlin.stdlib)
+        }
     }
 }
 
-tasks.register("clean", Delete::class) {
+tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = Dependencies.Versions.jvmTarget
     }
 }
 
@@ -44,7 +53,14 @@ tasks.koverXmlReport {
 }
 
 kover {
-    jacocoEngineVersion.set("0.8.8")
+    jacocoEngineVersion.set(Dependencies.Versions.jacoco)
     isDisabled = false
     generateReportOnCheck = true
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+    outputFormatter = "html"
 }
