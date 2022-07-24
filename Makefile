@@ -30,7 +30,7 @@ install:
 	./scripts/install.sh ${FLAVOR} ${BUILD_TYPE}
 
 lint:
-	./gradlew lint${FLAVOR}${BUILD_TYPE} lintKotlin detekt ${GRADLE_ARGS}
+	./gradlew lint${FLAVOR}${BUILD_TYPE} ${GRADLE_ARGS}
 
 pod-install:
 	./gradlew :shared:podInstall
