@@ -1,1 +1,1 @@
-# games-on-the-go
+# Games on the Go

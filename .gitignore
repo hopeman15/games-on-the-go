@@ -1,0 +1,20 @@
+# IntelliJ
+*.iml
+.idea
+
+# Gradle
+.gradle
+
+# Properties
+/local.properties
+local.properties
+
+# Build
+/build
+*/build
+
+# Misc
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx
