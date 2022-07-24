@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.hello.curiosity.gotg.android">
 
     <application
         android:allowBackup="false"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="DataExtractionRules,MissingApplicationIcon"> <!-- TODO: Fix these errors -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
