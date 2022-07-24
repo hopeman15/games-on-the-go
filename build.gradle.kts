@@ -1,4 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -17,6 +19,8 @@ buildscript {
 }
 
 plugins {
+    id(Dependencies.Gradle.detekt) version Dependencies.Versions.detekt
+    id(Dependencies.Gradle.kotlinter) version Dependencies.Versions.kotlinter
     id(Dependencies.Gradle.kover) version Dependencies.Versions.kover
     id(Dependencies.Gradle.versions) version Dependencies.Versions.gradleVersions
 }
@@ -40,6 +44,23 @@ tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = Dependencies.Versions.jvmTarget
     }
+}
+
+tasks.withType<Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+    }
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = Dependencies.Versions.jvmTarget
+}
+
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = Dependencies.Versions.jvmTarget
 }
 
 tasks.koverMergedHtmlReport {

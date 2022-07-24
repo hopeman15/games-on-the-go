@@ -3,6 +3,10 @@ import Dependencies.Android
 plugins {
     id("com.android.application")
     kotlin("android")
+
+    // Quality Gates
+    id(Dependencies.Gradle.detekt)
+    id(Dependencies.Gradle.kotlinter)
 }
 
 android {
