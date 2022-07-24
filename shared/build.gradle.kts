@@ -4,6 +4,10 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+
+    // Quality Gates
+    id(Dependencies.Gradle.kotlinter)
+    id(Dependencies.Gradle.detekt)
 }
 
 version = "1.0"
