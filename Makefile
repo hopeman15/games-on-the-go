@@ -1,3 +1,4 @@
+CI ?= false
 FLAVOR ?= Staging
 BUILD_TYPE ?= Debug
 GRADLE_ARGS ?= --build-cache
