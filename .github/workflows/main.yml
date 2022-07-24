@@ -1,0 +1,58 @@
+name: Games on the Go
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel-previous:
+    name: Cancel Previous
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Build
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+
+  test:
+    name: "Test & Report"
+    runs-on: ubuntu-latest
+    needs: cancel-previous
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_REPO_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
+      - name: Linting
+        run: make clean lint
+      - name: Test
+        run: make test report upload-coverage
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: cancel-previous
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
+      - name: APK
+        run: make clean assemble
+      - name: Bundle
+        run: make clean bundle
