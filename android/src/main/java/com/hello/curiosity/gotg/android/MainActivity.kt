@@ -1,9 +1,9 @@
 package com.hello.curiosity.gotg.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.hello.curiosity.gotg.Greeting
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.hello.curiosity.gotg.Greeting
 
 fun greet(): String {
     return Greeting().greeting()

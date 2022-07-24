@@ -12,6 +12,8 @@ object Dependencies {
         const val material = "1.6.1"
 
         // Quality Gates
+        const val detekt = "1.21.0"
+        const val kotlinter = "3.11.1"
         const val kover = "0.5.1"
     }
 
@@ -39,6 +41,8 @@ object Dependencies {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
         // Quality Gates
+        const val detekt = "io.gitlab.arturbosch.detekt"
+        const val kotlinter = "org.jmailen.kotlinter"
         const val kover = "org.jetbrains.kotlinx.kover"
         const val versions = "com.github.ben-manes.versions"
     }
