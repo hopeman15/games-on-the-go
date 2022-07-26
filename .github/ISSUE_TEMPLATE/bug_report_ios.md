@@ -1,7 +1,7 @@
 ---
-name: Bug Report
+name: iOS Bug Report
 about: Help make Games on the Go better by reporting bugs, and other issues.
-labels: bug, iOS
+labels: bug :bug:, iOS :apple:
 ---
 
 Your issue may have been reported already. Please have a quick look in the

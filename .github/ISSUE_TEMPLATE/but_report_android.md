@@ -1,7 +1,6 @@
 ---
 name: Bug Report
 about: Help make Games on the Go better by reporting bugs, and other issues.
-title: [Android]
 labels: bug, android :robot:
 ---
 
