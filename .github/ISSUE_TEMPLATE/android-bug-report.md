@@ -1,7 +1,10 @@
 ---
 name: Android Bug Report
-about: Help make Games on the Go better by reporting bugs, and other issues.
-labels: bug :bug:, android :robot:
+about: Create a report to help us improve
+title: ''
+labels: 'android :robot:, bug :bug:'
+assignees: ''
+
 ---
 
 Your issue may have been reported already. Please have a quick look in the
