@@ -1,7 +1,10 @@
 ---
 name: Feature Request
-about: Help make Games on the Goe better by creating a feature request.
-labels: feature :moneybag:
+about: Help make Games on the Go better by creating a feature request.
+title: ''
+labels: 'feature :moneybag:'
+assignees: ''
+
 ---
 
 Your feature request may already be reported! Please have a quick look in the
