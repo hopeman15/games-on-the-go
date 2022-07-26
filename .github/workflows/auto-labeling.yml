@@ -13,6 +13,9 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       REPO: ${{ github.repository_owner }}/${{ github.event.repository.name }}
     steps:
+      - name: Android
+        if: ${{ contains(github.event.pull_request.title, 'Android') }}
+        run: gh pr edit $PR_NUMBER --add-label 'android :robot:' -R $REPO
       - name: Bug
         if: ${{ contains(github.event.pull_request.title, 'Bug') || contains(github.event.pull_request.title, 'Fix') }}
         run: gh pr edit $PR_NUMBER --add-label 'bug :bug:' -R $REPO
