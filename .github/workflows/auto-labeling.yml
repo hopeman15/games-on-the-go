@@ -37,6 +37,9 @@ jobs:
       - name: Housekeeping
         if: ${{ contains(github.event.pull_request.title, 'Housekeeping') || contains(github.event.pull_request.title, 'Refactoring') }}
         run: gh pr edit $PR_NUMBER --add-label 'housekeeping :broom:' -R $REPO
+      - name: iOS
+        if: ${{ contains(github.event.pull_request.title, 'iOS') }}
+        run: gh pr edit $PR_NUMBER --add-label 'iOS :apple:' -R $REPO
       - name: Release
         if: ${{ contains(github.event.pull_request.title, 'Release') }}
         run: gh pr edit $PR_NUMBER --add-label 'release :tada:' -R $REPO
