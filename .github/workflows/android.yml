@@ -1,4 +1,4 @@
-name: Games on the Go
+name: Android 🤖
 
 on:
   pull_request:
@@ -39,8 +39,8 @@ jobs:
       - name: Test
         run: make test report upload-coverage
 
-  build-android:
-    name: "Build Android"
+  build:
+    name: "Build"
     runs-on: ubuntu-latest
     needs: cancel-previous
     steps:

@@ -2,7 +2,7 @@
 name: Bug Report
 about: Help make Games on the Go better by reporting bugs, and other issues.
 title: [Android]
-labels: bug, android
+labels: bug, android :robot:
 ---
 
 Your issue may have been reported already. Please have a quick look in the
