@@ -7,32 +7,25 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+Your issue may have been reported already. Please have a quick look in the
+[issues](https://github.com/hopeman15/games-on-the-go/issues) before creating a new
+one.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Observed Behavior**
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+<!-- Add a description of what you observed -->
+
+**Expected Behavior**
+
+<!-- Add a description of the expected behavior -->
+
+**How to test / reproduce**
+
+<!-- Put clear instructions on how to test. -->
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+<!-- If applicable, add screenshots to help explain your problem.  -->
 
 **Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
-
-**Additional context**
-Add any other context about the problem here.
+- Device: [e.g. iPhone 12]
+- Version: [e.g. 12]
