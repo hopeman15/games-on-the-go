@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: setup JDK
+      - name: Setup JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: setup JDK
+      - name: Setup JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
