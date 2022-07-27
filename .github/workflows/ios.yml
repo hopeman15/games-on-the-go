@@ -1,0 +1,40 @@
+name: iOS 🍎
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel-previous:
+    name: Cancel Previous
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Build
+        uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+
+  test:
+    name: "Test & Report"
+    runs-on: macos-latest
+    needs: cancel-previous
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_REPO_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1.113.2
+        with:
+          ruby-version: 2.4.0
+          bundler-cache: true
+      - name: Test
+        run: echo "Implement testing here...."
