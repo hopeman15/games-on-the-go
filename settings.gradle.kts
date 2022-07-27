@@ -6,6 +6,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Games_on_the_Go"
+rootProject.name = "Games on the Go"
 include(":android")
 include(":shared")
